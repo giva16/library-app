@@ -1,0 +1,124 @@
+@font-face {
+  font-family: 'Poppins';
+  src: url('../fonts/Poppins-Regular.ttf');
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Roboto-mono';
+  src: url('../fonts/RobotoMono-VariableFont_wght.ttf');
+}
+
+:root {
+  --body-bg-color: #adb5bd;
+  --body-text-color: black;
+  --book-bg-color: #f8f9fad3;
+  --marker-read-color: rgba(60, 255, 0, 0.534);
+  --shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+}
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  background-color: var(--body-bg-color);
+  color: var(--body-text-color);
+  font-family: 'Poppins', 'Roboto', sans-serif;
+  font-weight: 400;
+}
+
+.books-section {
+  padding: 40px 10% 100px;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 30px;
+  width: 100%;
+}
+
+.book-container {
+  background-color: var(--book-bg-color);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  text-align: center;
+  padding: 1em;
+  font-size: 1.5rem;
+  border-radius: 10px;
+  box-shadow: var(--shadow);
+  border: 3px solid black;
+  min-height: 300px;
+}
+
+.book-container > .book-info {
+  font-family: 'Roboto-mono', 'Poppins', Helvetica, sans-serif;
+}
+
+.delete {
+  position: absolute;
+  background: none;
+  border: none;
+  top: 10px;
+  cursor: pointer;
+  right: 10px;
+  color: red;
+}
+
+.book-container .read-marker {
+  font-weight: bold;
+  padding: 0.8em 0;
+  font-size: 1.2rem;
+  cursor: pointer;
+  border: none;
+  margin-top: 20px;
+  border-radius: 5px;
+  background-color: var(--marker-read-color);
+  margin-top: auto;
+}
+
+.footer {
+  margin-top: 200px;
+  padding: 10px 0;
+  font-family: 'Courier New', Courier, monospace;
+  position: absolute;
+  bottom: 0;
+  font-size: 1rem;
+  color: black;
+  display: flex;
+  width: 100vw;
+  justify-content: center;
+  gap: 5px;
+}
+
+.fab {
+  color: black;
+}
+
+@media all and (max-width: 790px) {
+  .books-section {
+    padding-left: 20px;
+    padding-right: 20px;
+    grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+  }
+}
+
+@media all and (max-width: 650px) {
+  .books-section {
+    display: flex;
+    flex-direction: column;
+  }
+  body {
+    min-width: fit-content;
+  }
+}
