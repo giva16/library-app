@@ -14,6 +14,7 @@
   --body-bg-color: #adb5bd;
   --body-text-color: black;
   --header-btn-color: rgb(202, 196, 196);
+  --header-btn-hover-color: rgb(219, 214, 214);
   --book-bg-color: #f8f9fad3;
   --marker-read-color: rgba(60, 255, 0, 0.534);
   --marker-read-hover-color: rgba(154, 241, 127, 0.781);
@@ -23,6 +24,7 @@
   --delete-hover-color: rgb(250, 120, 120);
   --button-font-size: 1.2rem;
   --pd-horizontal: 10%;
+  --btn-border-radius: 5px;
 }
 
 *,
@@ -54,6 +56,12 @@ body {
   box-shadow: var(--shadow);
 }
 
+button {
+  font-size: var(--button-font-size);
+  cursor: pointer;
+  border: none;
+}
+
 .header .buttons {
   margin-left: auto;
 }
@@ -64,7 +72,13 @@ body {
 
 .header-btn {
   font-size: var(--button-font-size);
-  padding: 5px 10px;
+  background-color: var(--header-btn-color);
+  padding: 10px 30px;
+  border-radius: var(--btn-border-radius);
+}
+
+.header-btn:hover {
+  background-color: var(--header-btn-hover-color);
 }
 
 .header .title {
@@ -116,11 +130,8 @@ body {
 .read-marker {
   font-weight: bold;
   padding: 0.8em 0;
-  font-size: var(--button-font-size);
-  cursor: pointer;
-  border: none;
   margin-top: 20px;
-  border-radius: 5px;
+  border-radius: var(--btn-border-radius);
   background-color: var(--marker-read-color);
   margin-top: auto;
 }
