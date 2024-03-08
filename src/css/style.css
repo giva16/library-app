@@ -13,9 +13,16 @@
 :root {
   --body-bg-color: #adb5bd;
   --body-text-color: black;
+  --header-btn-color: rgb(202, 196, 196);
   --book-bg-color: #f8f9fad3;
   --marker-read-color: rgba(60, 255, 0, 0.534);
+  --marker-read-hover-color: rgba(154, 241, 127, 0.781);
+  --marker-not-read-color: rgba(60, 255, 0, 0.534);
   --shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+  --delete-color: red;
+  --delete-hover-color: rgb(250, 120, 120);
+  --button-font-size: 1.2rem;
+  --pd-horizontal: 10%;
 }
 
 *,
@@ -34,12 +41,39 @@ html {
 body {
   background-color: var(--body-bg-color);
   color: var(--body-text-color);
-  font-family: 'Poppins', 'Roboto', sans-serif;
+  font-family: 'Poppins', 'Roboto-mono', sans-serif;
   font-weight: 400;
 }
 
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem var(--pd-horizontal);
+  background-color: var(--book-bg-color);
+  box-shadow: var(--shadow);
+}
+
+.header .buttons {
+  margin-left: auto;
+}
+
+.header-btn:first-child {
+  margin-right: 50px;
+}
+
+.header-btn {
+  font-size: var(--button-font-size);
+  padding: 5px 10px;
+}
+
+.header .title {
+  flex: 1;
+  font-size: 2rem;
+}
+
 .books-section {
-  padding: 40px 10% 100px;
+  padding: 40px var(--pd-horizontal) 100px;
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
   gap: 30px;
@@ -72,19 +106,27 @@ body {
   top: 10px;
   cursor: pointer;
   right: 10px;
-  color: red;
+  color: var(--delete-color);
 }
 
-.book-container .read-marker {
+.delete:hover {
+  color: var(--delete-hover-color);
+}
+
+.read-marker {
   font-weight: bold;
   padding: 0.8em 0;
-  font-size: 1.2rem;
+  font-size: var(--button-font-size);
   cursor: pointer;
   border: none;
   margin-top: 20px;
   border-radius: 5px;
   background-color: var(--marker-read-color);
   margin-top: auto;
+}
+
+.read-marker:hover {
+  background-color: var(--marker-read-hover-color);
 }
 
 .footer {
@@ -107,9 +149,12 @@ body {
 
 @media all and (max-width: 790px) {
   .books-section {
-    padding-left: 20px;
-    padding-right: 20px;
+    --pd-horizontal: 20px;
     grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+  }
+
+  .header {
+    --pd-horizontal: 20px;
   }
 }
 
