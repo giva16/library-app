@@ -2,6 +2,14 @@
 import './css/style.css';
 import '@fortawesome/fontawesome-free/css/all.css';
 
-console.log(message);
+const addBookBtn = document.querySelector('#add-book');
+const closeFormBtn = document.querySelector('#close-form');
+const formModal = document.querySelector('#add-book-modal');
 
-const hello = () => console.log();
+addBookBtn.addEventListener('click', () => {
+  formModal.showModal();
+});
+
+closeFormBtn.addEventListener('click', () => {
+  formModal.close();
+});

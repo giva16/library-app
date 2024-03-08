@@ -15,16 +15,18 @@
   --body-text-color: black;
   --header-btn-color: rgb(202, 196, 196);
   --header-btn-hover-color: rgb(219, 214, 214);
+  --add-btn-hover-color: rgb(202, 196, 196);
   --book-bg-color: #f8f9fad3;
   --marker-read-color: rgba(60, 255, 0, 0.534);
   --marker-read-hover-color: rgba(154, 241, 127, 0.781);
   --marker-not-read-color: rgba(60, 255, 0, 0.534);
-  --shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+  --shadow: rgba(0, 0, 0, 0.384) 0px 1px 4px;
   --delete-color: red;
   --delete-hover-color: rgb(250, 120, 120);
   --button-font-size: 1.2rem;
   --pd-horizontal: 10%;
   --btn-border-radius: 5px;
+  --form-font-size: 1.4rem;
 }
 
 *,
@@ -56,7 +58,8 @@ body {
   box-shadow: var(--shadow);
 }
 
-button {
+button,
+input[type='submit'] {
   font-size: var(--button-font-size);
   cursor: pointer;
   border: none;
@@ -67,7 +70,7 @@ button {
 }
 
 .header-btn:first-child {
-  margin-right: 50px;
+  margin-right: 2vw;
 }
 
 .header-btn {
@@ -77,13 +80,72 @@ button {
   border-radius: var(--btn-border-radius);
 }
 
-.header-btn:hover {
+.header-btn:hover,
+.submit:hover {
   background-color: var(--header-btn-hover-color);
 }
 
 .header .title {
   flex: 1;
   font-size: 2rem;
+}
+
+.controls {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.controls #add-book {
+  padding: 5px 20px;
+  font-size: 1.6rem;
+  border-radius: var(--btn-border-radius);
+  box-shadow: var(--shadow);
+}
+
+.controls #add-book:hover {
+  background-color: var(--add-btn-hover-color);
+}
+
+.modal {
+  margin: auto;
+  border: none;
+  border-radius: 10px;
+}
+
+.modal form {
+  text-align: center;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  padding: 50px;
+  font-size: var(--form-font-size);
+}
+
+#close-form {
+  border: none;
+  background: none;
+  cursor: pointer;
+  max-width: 30px;
+  color: red;
+  position: absolute;
+  right: 5px;
+  top: 5px;
+}
+
+.modal > form input {
+  padding: 5px;
+  font-size: calc(var(--form-font-size) - 0.2rem);
+}
+
+.modal > form label {
+  font-size: 1.2rem;
+}
+
+.modal::backdrop {
+  background: gray;
+  opacity: 0.4;
 }
 
 .books-section {
@@ -105,7 +167,6 @@ button {
   font-size: 1.5rem;
   border-radius: 10px;
   box-shadow: var(--shadow);
-  border: 3px solid black;
   min-height: 300px;
 }
 
@@ -123,17 +184,23 @@ button {
   color: var(--delete-color);
 }
 
-.delete:hover {
+.delete:hover,
+#close-form:hover {
   color: var(--delete-hover-color);
 }
 
-.read-marker {
+.read-marker,
+.submit {
   font-weight: bold;
   padding: 0.8em 0;
   margin-top: 20px;
   border-radius: var(--btn-border-radius);
   background-color: var(--marker-read-color);
   margin-top: auto;
+}
+
+.submit {
+  background-color: var(--header-btn-color);
 }
 
 .read-marker:hover {
@@ -176,5 +243,32 @@ button {
   }
   body {
     min-width: fit-content;
+  }
+
+  .header .title {
+    font-size: 1.5rem;
+  }
+
+  .header .header-btn {
+    --button-font-size: 0.8rem;
+  }
+}
+
+@media all and (max-width: 450px) {
+  .header {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .header .buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 100%;
+    margin-left: 0;
+  }
+
+  .header-btn {
+    width: 100%;
   }
 }

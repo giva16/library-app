@@ -13,7 +13,26 @@
         <button id="register" class="header-btn">Register</button>
       </div>
     </header>
-    <div class="controls"></div>
+    <div class="controls">
+      <button id="add-book" data-open-modal>
+        <i class="fas fa-plus"></i>
+        Add Book
+      </button>
+    </div>
+    <dialog id="add-book-modal" class="modal" data-modal>
+      <form>
+        <button id="close-form" data-close-modal><i class="fas fa-times fa-2x"></i></button>
+        <h3>Add a new book</h3>
+        <input type="text" title="book title" name="title" id="title" placeholder="Title" required />
+        <input type="text" title="author name" name="author" id="author" placeholder="Author" required />
+        <input type="number" title="number of pages" name="pages" id="pages" placeholder="Pages" required />
+        <div class="is-read">
+          <label for="book-read">Have you read it?</label>
+          <input type="checkbox" id="book-read" name="book_read" />
+        </div>
+        <input id="submit-book" type="submit" class="submit" />
+      </form>
+    </dialog>
     <div class="books">
       <section class="books-section">
         <article class="book-container">
