@@ -1,6 +1,7 @@
 // Entry point for our source codes
 import './css/style.css';
 import '@fortawesome/fontawesome-free/css/all.css';
+import Library from './Library';
 import Book from './Book';
 
 const addBookBtn = document.querySelector('#add-book');
@@ -15,8 +16,18 @@ closeFormBtn.addEventListener('click', () => {
   formModal.close();
 });
 
-//create an instance of a book
-const harryPotter = new Book('Harry Potter', 'J.K. Rowling', 230, 1997, 'Fantasy', '', 'A blurb', true);
+const lib = new Library();
 
-// display book
-console.log(harryPotter);
+//create an instance of a book
+const book1 = new Book('Harry Potter', 'J.K. Rowling', 230, 1997, 'Fantasy', '', 'A blurb', true);
+const book2 = new Book('Ghost Recon', 'Tom Clancy', 230, 2000, 'Fantasy', '', 'A blurb', true);
+const book3 = new Book('The Great Gatsby', 'J.Kasdasg', 230, 1937, 'Fantasy', '', 'A blurb', true);
+
+//test add
+lib.addBook(book1);
+lib.addBook(book2);
+lib.addBook(book3);
+
+lib.removeBook(book1._id);
+
+console.log(lib._books);
