@@ -26,9 +26,8 @@ class Library {
       <p id="num-pages" class="book-info">${book.pages} pages</p>
       <button class="btn read-marker">Read</button>
       `;
-
     booksSection.appendChild(bookEl);
   }
 }
 
-module.exports = Library;
+export default Library;

@@ -3,6 +3,7 @@ import './css/style.css';
 import '@fortawesome/fontawesome-free/css/all.css';
 import Library from './Library';
 import Book from './Book';
+import Storage from './Storage';
 
 const addBookBtn = document.querySelector('#add-book');
 const closeFormBtn = document.querySelector('#close-form');
@@ -29,3 +30,9 @@ lib.addBook(book2);
 lib.addBook(book3);
 
 lib.removeBook(book1);
+
+// Test Storage methods
+// Storage.saveBook(book1._id);
+// Storage.saveBook(book2._id);
+// Storage.saveBook(book3._id);
+console.log(Storage.getBooks());
