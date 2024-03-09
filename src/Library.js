@@ -30,6 +30,7 @@ class Library {
     const bookEl = document.createElement('article');
 
     bookEl.classList.add('book-container');
+    bookEl.setAttribute('data-id', book.id);
     bookEl.innerHTML = `
       <button class="delete"><i class="fas fa-times fa-2x"></i></button>
       <p id="title" class="book-info">${book.title}</p>
