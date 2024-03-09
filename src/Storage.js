@@ -5,18 +5,24 @@ class Storage {
 
     // check if there is a 'books' entry in localstorage
     if (!localStorage.getItem('books')) {
-      books = [];
+      books = {};
     } else {
       books = JSON.parse(localStorage.getItem('books'));
     }
-
     return books;
   }
 
-  static saveBook(bookID) {
+  static saveBook(book) {
     const books = this.getBooks();
 
-    books.push(bookID);
+    books[book.id] = book.id;
+    localStorage.setItem('books', JSON.stringify(books));
+  }
+
+  static deleteBook(book) {
+    const books = this.getBooks();
+
+    delete books[book.id];
     localStorage.setItem('books', JSON.stringify(books));
   }
 }

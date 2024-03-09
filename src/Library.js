@@ -1,3 +1,4 @@
+import Storage from './Storage';
 class Library {
   constructor() {
     this._books = new Map();
@@ -7,11 +8,14 @@ class Library {
 
   addBook(book) {
     this._books.set(book._id, book);
+    Storage.saveBook(book);
+    console.log(book.id);
     this._displayBook(book);
   }
 
-  removeBook(id) {
-    this._books.delete(id);
+  removeBook(book) {
+    this._books.delete(book.id);
+    Storage.deleteBook(book);
   }
 
   _displayBook(book) {

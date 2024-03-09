@@ -20,19 +20,6 @@ closeFormBtn.addEventListener('click', () => {
 const lib = new Library();
 
 //create an instance of a book
-const book1 = new Book('Harry Potter', 'J.K. Rowling', 230, 1997, 'Fantasy', '', 'A blurb', true);
-const book2 = new Book('Ghost Recon', 'Tom Clancy', 230, 2000, 'Fantasy', '', 'A blurb', true);
-const book3 = new Book('The Great Gatsby', 'J.Kasdasg', 230, 1937, 'Fantasy', '', 'A blurb', true);
-
-//test add
-lib.addBook(book1);
-lib.addBook(book2);
-lib.addBook(book3);
-
-lib.removeBook(book1);
-
-// Test Storage methods
-// Storage.saveBook(book1._id);
-// Storage.saveBook(book2._id);
-// Storage.saveBook(book3._id);
-console.log(Storage.getBooks());
+//const book1 = new Book('Harry Potter', 'J.K. Rowling', 230, 1997, 'Fantasy', '', 'A blurb', true);
+//const book2 = new Book('Ghost Recon', 'Tom Clancy', 230, 2000, 'Fantasy', '', 'A blurb', true);
+//const book3 = new Book('The Great Gatsby', 'J.Kasdasg', 230, 1937, 'Fantasy', '', 'A blurb', true);
