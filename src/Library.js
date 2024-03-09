@@ -12,9 +12,9 @@ class Library {
     this._displayBook(book);
   }
 
-  removeBook(book) {
-    delete this._books[book.id];
-    Storage.deleteBook(book);
+  removeBook(id) {
+    delete this._books[id];
+    Storage.deleteBook(id);
   }
 
   // laod all books onto the DOM  when app is launched
@@ -32,7 +32,7 @@ class Library {
     bookEl.classList.add('book-container');
     bookEl.setAttribute('data-id', book.id);
     bookEl.innerHTML = `
-      <button class="delete"><i class="fas fa-times fa-2x"></i></button>
+      <button class="delete"><i class="fas icon-delete fa-times fa-2x"></i></button>
       <p id="title" class="book-info">${book.title}</p>
       <p id="author" class="book-info">${book.author}</p>
       <p id="num-pages" class="book-info">${book.pages} pages</p>

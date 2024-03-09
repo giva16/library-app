@@ -19,10 +19,10 @@ class Storage {
     localStorage.setItem('books', JSON.stringify(books));
   }
 
-  static deleteBook(book) {
+  static deleteBook(id) {
     const books = this.getBooks();
 
-    delete books[book.id];
+    delete books[id];
     localStorage.setItem('books', JSON.stringify(books));
   }
 }
