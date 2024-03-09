@@ -93,7 +93,7 @@ input[type='submit'] {
 .controls {
   display: flex;
   justify-content: center;
-  margin-top: 20px;
+  margin-top: 40px;
 }
 
 .controls #add-book {
@@ -226,13 +226,9 @@ input[type='submit'] {
 }
 
 @media all and (max-width: 790px) {
-  .books-section {
-    --pd-horizontal: 20px;
-    grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
-  }
-
+  .books-section,
   .header {
-    --pd-horizontal: 20px;
+    --pd-horizontal: 60px;
   }
 }
 
