@@ -1,23 +1,30 @@
 import Storage from './Storage';
 class Library {
   constructor() {
-    this._books = new Map();
+    this._books = Storage.getBooks();
     this._numBooks = this._books.length;
     this._booksRead = 0;
   }
 
   addBook(book) {
-    this._books.set(book._id, book);
+    this._books[book.id] = book;
     Storage.saveBook(book);
-    console.log(book.id);
     this._displayBook(book);
   }
 
   removeBook(book) {
-    this._books.delete(book.id);
+    delete this._books[book.id];
     Storage.deleteBook(book);
   }
 
+  // laod all books onto the DOM  when app is launched
+  loadBooks() {
+    for (let [id, book] of Object.entries(this._books)) {
+      this._displayBook(book);
+    }
+  }
+
+  // displays a book in the library by adding it to the DOM
   _displayBook(book) {
     const booksSection = document.querySelector('.books-section');
     const bookEl = document.createElement('article');

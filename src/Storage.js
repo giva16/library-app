@@ -15,7 +15,7 @@ class Storage {
   static saveBook(book) {
     const books = this.getBooks();
 
-    books[book.id] = book.id;
+    books[book.id] = book;
     localStorage.setItem('books', JSON.stringify(books));
   }
 
