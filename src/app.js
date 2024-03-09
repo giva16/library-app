@@ -27,7 +27,3 @@ const book3 = new Book('The Great Gatsby', 'J.Kasdasg', 230, 1937, 'Fantasy', ''
 lib.addBook(book1);
 lib.addBook(book2);
 lib.addBook(book3);
-
-lib.removeBook(book1._id);
-
-console.log(lib._books);
