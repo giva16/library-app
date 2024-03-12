@@ -2,8 +2,9 @@ import Storage from './Storage';
 class Library {
   constructor() {
     this._books = Storage.getBooks();
-    this._numBooks = this._books.length;
-    this._booksRead = 0;
+    /**** Attribute for future extension ****/
+    // this._numBooks = this._books.length;
+    // this._booksRead = 0;
   }
 
   addBook(book) {

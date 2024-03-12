@@ -18,13 +18,23 @@ class App {
 
     const closeAddBookFormBtn = document.querySelector('#close-form');
     const addBookForm = document.querySelector('#add-book-form');
+
     closeAddBookFormBtn.addEventListener('click', () => {
       this._closeModal(addBookModal);
       addBookForm.reset();
     });
 
     const booksEl = document.querySelector('.books-section');
-    booksEl.addEventListener('click', this._removeBook.bind(this));
+    booksEl.addEventListener('click', this._removeBook.bind(this)); // remove book when delete button is clicked
+    addBookForm.addEventListener('submit', this._newBook.bind(this)); // add book by getting its data from the form when submitted
+  }
+
+  _newBook() {
+    const title = document.querySelector('#title').value;
+    const author = document.querySelector('#author').value;
+    const pages = document.querySelector('#pages').value;
+
+    this._library.addBook(new Book(title, author, +pages));
   }
 
   _removeBook(e) {
@@ -51,10 +61,7 @@ class App {
 const lib = new Library();
 
 //create an instance of a book
-const book1 = new Book('Harry Potter', 'J.K. Rowling', 230, 1997, 'Fantasy', '', 'A blurb', true);
-const book2 = new Book('Ghost Recon', 'Tom Clancy', 230, 2000, 'Fantasy', '', 'A blurb', true);
-// //const book3 = new Book('The Great Gatsby', 'J.Kasdasg', 230, 1937, 'Fantasy', '', 'A blurb', true);
+const book1 = new Book('Harry Potter', 'J.K. Rowling', 230);
+const book2 = new Book('Ghost Recon', 'Tom Clancy', 222);
 
-//lib.addBook(book1);
-// lib.addBook(book2);
 const app = new App();

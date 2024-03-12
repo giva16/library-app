@@ -5,12 +5,13 @@ class Book {
     this.title = title;
     this.author = author;
     this.pages = pages;
-    this.year = year;
-    this.genre = genre;
-    this.coverURL = coverURL;
-    this.blurb = blurb;
-    this.isRead = isRead;
-    this.favorite = favorite;
+    /********* Attributes for future extension*****/
+    // this.year = year;
+    // this.genre = genre;
+    // this.coverURL = coverURL;
+    // this.blurb = blurb;
+    // this.isRead = isRead;
+    // this.favorite = favorite;
   }
 }
 
