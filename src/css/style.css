@@ -19,7 +19,8 @@
   --book-bg-color: #f8f9fad3;
   --marker-read-color: rgba(60, 255, 0, 0.534);
   --marker-read-hover-color: rgba(154, 241, 127, 0.781);
-  --marker-not-read-color: rgba(60, 255, 0, 0.534);
+  --marker-not-read-color: rgba(255, 0, 0, 0.653);
+  --marker-not-read-hover-color: rgb(250, 120, 120);
   --shadow: rgba(0, 0, 0, 0.384) 0px 1px 4px;
   --delete-color: red;
   --delete-hover-color: rgb(250, 120, 120);
@@ -195,16 +196,27 @@ input[type='submit'] {
   padding: 0.8em 0;
   margin-top: 20px;
   border-radius: var(--btn-border-radius);
-  background-color: var(--marker-read-color);
   margin-top: auto;
+}
+
+.read-marker.read {
+  background-color: var(--marker-read-color);
+}
+
+.read-marker.read:hover {
+  background-color: var(--marker-read-hover-color);
+}
+
+.read-marker {
+  background-color: var(--marker-not-read-color);
+}
+
+.read-marker:hover {
+  background-color: var(--marker-not-read-hover-color);
 }
 
 .submit {
   background-color: var(--header-btn-color);
-}
-
-.read-marker:hover {
-  background-color: var(--marker-read-hover-color);
 }
 
 .footer {

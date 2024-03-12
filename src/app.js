@@ -12,21 +12,23 @@ class App {
   }
 
   _loadEventListeners() {
+    /********* UI ***********/
+    const booksEl = document.querySelector('.books-section');
     const addBookBtn = document.querySelector('#add-book');
-    const addBookModal = document.querySelector('#add-book-modal');
-    addBookBtn.addEventListener('click', this._openModal.bind(this, addBookModal));
-
-    const closeAddBookFormBtn = document.querySelector('#close-form');
     const addBookForm = document.querySelector('#add-book-form');
+    const addBookModal = document.querySelector('#add-book-modal');
+    const closeAddBookFormBtn = document.querySelector('#close-form');
 
+    booksEl.addEventListener('click', this._removeBook.bind(this)); // remove book when delete button is clicked
+    addBookForm.addEventListener('submit', this._newBook.bind(this)); // add book by getting its data from the form when submitted
+    booksEl.addEventListener('click', this._markRead.bind(this)); // Mark books as read/unread
+    addBookBtn.addEventListener('click', this._openModal.bind(this, addBookModal)); // open Modal
+
+    // Close modal and reset form
     closeAddBookFormBtn.addEventListener('click', () => {
       this._closeModal(addBookModal);
       addBookForm.reset();
     });
-
-    const booksEl = document.querySelector('.books-section');
-    booksEl.addEventListener('click', this._removeBook.bind(this)); // remove book when delete button is clicked
-    addBookForm.addEventListener('submit', this._newBook.bind(this)); // add book by getting its data from the form when submitted
   }
 
   _newBook() {
@@ -40,12 +42,30 @@ class App {
   _removeBook(e) {
     if (e.target.classList.contains('icon-delete')) {
       if (confirm('Are you sure that you want to delete this book?')) {
-        const id = e.target.closest('.book-container').getAttribute('data-id');
+        const id = this._getBookId(e);
 
         // remove book from library
         this._library.removeBook(id);
 
         e.target.closest('.book-container').remove();
+      }
+    }
+  }
+
+  _markRead(e) {
+    if (e.target.classList.contains('read-marker')) {
+      const id = this._getBookId(e);
+
+      this._library._markRead(id);
+
+      if (this._library._books[id].isRead) {
+        e.target.classList.add('read');
+        e.target.textContent = 'Read';
+      }
+
+      if (e.target.classList.contains('read') && !this._library._books[id].isRead) {
+        e.target.classList.remove('read');
+        e.target.textContent = 'Unread';
       }
     }
   }
@@ -56,6 +76,11 @@ class App {
 
   _closeModal(modal) {
     modal.close();
+  }
+
+  _getBookId(e) {
+    const id = e.target.closest('.book-container').getAttribute('data-id');
+    return id;
   }
 }
 const lib = new Library();

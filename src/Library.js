@@ -2,9 +2,6 @@ import Storage from './Storage';
 class Library {
   constructor() {
     this._books = Storage.getBooks();
-    /**** Attribute for future extension ****/
-    // this._numBooks = this._books.length;
-    // this._booksRead = 0;
   }
 
   addBook(book) {
@@ -18,6 +15,13 @@ class Library {
     Storage.deleteBook(id);
   }
 
+  _markRead(id) {
+    const book = this._books[id];
+
+    book.isRead = !book.isRead;
+    Storage.saveBook(book);
+  }
+
   // laod all books onto the DOM  when app is launched
   loadBooks() {
     for (let [id, book] of Object.entries(this._books)) {
@@ -29,6 +33,8 @@ class Library {
   _displayBook(book) {
     const booksSection = document.querySelector('.books-section');
     const bookEl = document.createElement('article');
+    const bookReadClass = book.isRead ? 'read' : '';
+    const bookReadText = book.isRead ? 'Read' : 'Unread';
 
     bookEl.classList.add('book-container');
     bookEl.setAttribute('data-id', book.id);
@@ -37,7 +43,7 @@ class Library {
       <p id="title" class="book-info">${book.title}</p>
       <p id="author" class="book-info">${book.author}</p>
       <p id="num-pages" class="book-info">${book.pages} pages</p>
-      <button class="btn read-marker">Read</button>
+      <button class="btn read-marker ${bookReadClass}">${bookReadText}</button>
       `;
     booksSection.appendChild(bookEl);
   }
