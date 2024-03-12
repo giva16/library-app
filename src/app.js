@@ -35,8 +35,9 @@ class App {
     const title = document.querySelector('#title').value;
     const author = document.querySelector('#author').value;
     const pages = document.querySelector('#pages').value;
+    const isRead = document.querySelector('#book-read').checked;
 
-    this._library.addBook(new Book(title, author, +pages));
+    this._library.addBook(new Book(title, author, +pages, isRead));
   }
 
   _removeBook(e) {
